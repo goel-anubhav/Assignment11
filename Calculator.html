@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+
+
+<!-- ***************************************** CSS ***********************************  -->
+    <style>
+        .container{
+            padding: 5px;
+            border: 1px solid #ccc  ;
+            border-radius: 20px;
+            position: absolute;
+        }
+
+        .button{
+            height: 80px;
+            width: 80px;
+            padding: 5px;
+            background-color: #fff;
+            border: 1px solid #000;
+            font-size: 2rem;
+        }
+
+        .button:hover {
+            background-color: yellowgreen;
+        }
+
+        .operator {
+        color: rgb(0, 0, 0);
+        background-color: #b9b8b4;
+        font-size: 2rem;
+        height: 80px;
+        width: 80px;
+        }
+
+        .operator:hover{
+            background-color: pink;
+        }
+        .clear {
+            background-color: #fff;
+            width: 80px;
+            height: 80px;  
+            font-size: 2rem;
+        }
+        .clear:hover{
+            background-color: red;
+        }
+        .equal-sign{
+            height: 330px;
+            background-color: orange;
+        }
+        .equal-sign:hover{
+            background-color: aqua;
+        }
+        .screen{
+            height: 80px;
+            width: 320px;
+            background-color: #000;
+            color: #fff;
+            border: 1px solid;
+            border-radius: 15px;
+            font-size: 3rem;
+        }
+
+    </style>
+<!-- **************************************************************************************** -->
+
+
+<!-- *********************************** JavaScript ********************************************** -->
+    <script>
+        function display(val){
+            if(document.getElementById('result').value == '0'){
+                clearScreen()
+            }
+            document.getElementById('result').value += val
+            return val
+        }
+
+        function solve(){
+            let x = document.getElementById('result').value
+            let y = eval(x);           
+            document.getElementById('result').value = y            
+            return y
+        }
+
+        function clearScreen(){
+            document.getElementById('result').value = ' '
+        }
+    </script>
+
+<!-- *************************************************************************************** -->
+</head>
+<body>
+    
+    <div class="container" >
+        <table>
+            <tr>
+                <td colspan="4">
+                    <input type="text" id="result" value="0" class ="screen" style="text-align: right;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="+"  class="operator" onClick="display('+')">
+                </td>
+                <td>
+                    <input type="button" value="-"  class="operator" onClick="display('-')">
+                </td>
+                <td>
+                    <input type="button" value="*"  class="operator" onClick="display('*')">
+                </td>
+                <td>
+                    <input type="button" value="/"  class="operator" onClick="display('/')">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="9" class="button" onClick="display('9')">  
+                </td>
+                <td>
+                    <input type="button" value="8" class="button" onClick="display('8')">  
+                </td>
+                <td>
+                    <input type="button" value="7" class="button" onClick="display('7')">  
+                </td>
+                <td rowspan="4">
+                    <input type="button" value= "=" class="button equal-sign" onClick="solve()"> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="6" class="button" onClick="display('6')">  
+                </td>
+                <td>
+                    <input type="button" value="5" class="button" onClick="display('5')">  
+                </td>
+                <td>
+                    <input type="button" value="4" class="button" onClick="display('4')">  
+                </td>
+               
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="3" class="button" onClick="display('3')">  
+                </td>
+                <td>
+                    <input type="button" value="2" class="button" onClick="display('2')">  
+                </td>
+                <td>
+                    <input type="button" value="1" class="button" onClick="display('1')">  
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="0" class="button" onClick="display('0')">  
+                </td>
+                <td>
+                    <input type="button" value="." class="button" onClick="display('.')">  
+                </td>
+                <td>
+                    <input type='button' value = 'AC' onclick="clearScreen()" class="clear"/> 
+                </td>
+                
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
